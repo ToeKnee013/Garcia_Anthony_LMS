@@ -29,7 +29,9 @@ CRN: CEN 3024C
  * 1. add a book - Add a book to a text file with an ID, book name, and author
  * 2. remove a book - removes a book based on the selected ID
  * 3. list all books - List all books within the text file
- * 4. Quit - Exits the program
+ * 4. Check out a book
+ * 5. Check in a book
+ * 6. Quit - Exits the program
 */
 
 package module2;
@@ -41,7 +43,10 @@ import java.util.*;
 //LMS Class
 public class LibraryManagementSystem {
     private List<Book> books;
-    private static final String FILENAME = "C:\\Users\\ozore\\OneDrive\\Documents\\Software Development 1\\library.txt"; // Name of the text file
+    //private static final String FILENAME = "C:\\Users\\ozore\\OneDrive\\Documents\\Software Development 1\\library.txt"; // Name of the text file
+    static Scanner scanner = new Scanner(System.in);
+    private static final String FILENAME = "C:\\Users\\ozore\\OneDrive\\Documents\\Software Development 1\\" + scanner.nextLine() + ".txt"; // Name of the text file
+
 
     public LibraryManagementSystem() {
         books = new ArrayList<>();
@@ -75,7 +80,7 @@ public class LibraryManagementSystem {
         if (books.isEmpty()) {
             System.out.println("No books in the collection.");
         } else {
-            System.out.println("Books in the collection:");
+            System.out.println("Printing books in the collection:");
             for (Book book : books) {
                 System.out.println(book);
             }
@@ -112,6 +117,29 @@ public class LibraryManagementSystem {
         }
     }
 
+    
+    
+    public boolean checkOutBook(String title) {
+        for (Book book : books) {
+            if (book.getTitle().equalsIgnoreCase(title) && !book.isCheckedOut()) {
+                book.checkOut();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkInBook(String title) {
+        for (Book book : books) {
+            if (book.getTitle().equalsIgnoreCase(title) && book.isCheckedOut()) {
+                book.checkIn();
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
     // Main
     public static void main(String[] args) {
         LibraryManagementSystem library = new LibraryManagementSystem();
@@ -123,7 +151,9 @@ public class LibraryManagementSystem {
             System.out.println("1. Add a book");
             System.out.println("2. Remove a book by ID");
             System.out.println("3. List all books");
-            System.out.println("4. Quit");
+            System.out.println("4. Check out a book");
+            System.out.println("5. Check in a book");
+            System.out.println("6. Quit");
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
@@ -131,6 +161,7 @@ public class LibraryManagementSystem {
 
             // Switch case statements for choosing options
             switch (choice) {
+            
             	// Add a book
                 case 1:
                     System.out.print("Enter book ID: ");
@@ -153,18 +184,46 @@ public class LibraryManagementSystem {
                 case 3:
                     library.listAllBooks();
                     break;
-                // Exit program
+                // Check out book
+                    
                 case 4:
-                    System.out.println("Exiting the Library Management System.");
-                    System.exit(0);
+                // Ask the user for a title to check out
+                    System.out.print("Enter a title to check out: ");
+                    String input = scanner.nextLine();
+                    boolean checkedOut = library.checkOutBook(input);
+
+                    if (checkedOut) {
+                        System.out.println("Book with title '" + input + "' checked out.");
+                    } else {
+                        System.out.println("Book with title '" + input + "' not found or already checked out.");
+                    }
+                    
+                    case 5:
+                    // Ask the user for a title to check in
+                    System.out.print("Enter a title to check in: ");
+                    input = scanner.nextLine();
+                    boolean checkedIn = library.checkInBook(input);
+
+                    if (checkedIn) {
+                        System.out.println("Book with title '" + input + "' checked in.");
+                    } else {
+                        System.out.println("Book with title '" + input + "' not found or already checked in.");
+                    }
+
+                    // Exit program
+                    case 6:
+                        System.out.println("Exiting the Library Management System.");
+                        System.exit(0);
                 // Invalid choice if options 1-4 are not selected
                 default:
                     System.out.println("Invalid choice. Please try again.");
+                    scanner.close();
                     break;
         }
     }
 }
 }
+
 
 
 /**
@@ -182,11 +241,14 @@ class Book {
     private int id;
     private String title;
     private String author;
+    private boolean checkedOut;
+
 
     public Book(int id, String title, String author) {
         this.id = id;
         this.title = title;
         this.author = author;
+        this.checkedOut = false;
     }
     
     // Get the ID
@@ -213,6 +275,18 @@ class Book {
     // Convert a Book object to a formatted string for writing to a file
     public String toFileString() {
         return id + "," + title + "," + author;
+    }
+    
+    public boolean isCheckedOut() {
+        return checkedOut;
+    }
+
+    public void checkOut() {
+        checkedOut = true;
+    }
+
+    public void checkIn() {
+        checkedOut = false;
     }
 
     // Create a Book object from the previously formatted string
