@@ -10,13 +10,22 @@ CRN: CEN 3024C
 [Module 2 SLDC Assignment FINAL.pdf](https://github.com/ToeKnee013/Garcia_Anthony_LMS/files/12569939/Module.2.SLDC.Assignment.FINAL.pdf)
 
 ## Text Files
+### Main Code
 [Book.txt](https://github.com/ToeKnee013/Garcia_Anthony_LMS/files/12569994/Book.txt)
 
 [LibraryManagementSystem.txt](https://github.com/ToeKnee013/Garcia_Anthony_LMS/files/12569993/LibraryManagementSystem.txt)
 
 [library.txt](https://github.com/ToeKnee013/Garcia_Anthony_LMS/files/12569992/library.txt)
 
+### Test Cases
 
+[removeBookTest.txt](https://github.com/ToeKnee013/Garcia_Anthony_LMS/files/12910707/removeBookTest.txt)
+
+[checkOutTest.txt](https://github.com/ToeKnee013/Garcia_Anthony_LMS/files/12910706/checkOutTest.txt)
+
+[checkInTest.txt](https://github.com/ToeKnee013/Garcia_Anthony_LMS/files/12910705/checkInTest.txt)
+
+[addBooksTest.txt](https://github.com/ToeKnee013/Garcia_Anthony_LMS/files/12910704/addBooksTest.txt)
 
 ## Raw Code
 
