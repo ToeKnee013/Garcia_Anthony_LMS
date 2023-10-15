@@ -1,0 +1,24 @@
+package module7;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+import java.util.List;
+
+public class checkOutTest {
+	   public void testCheckoutBook() {
+	        // Create a LibraryManagementSystem instance
+	        LibraryManagementSystem library = new LibraryManagementSystem();
+	        
+	        // Add a book to the library
+	        library.addBook(1, "To Kill a Mockingbird", "Harper Lee");
+	        
+	        // Check out the book
+	        library.checkOutBook("To Kill a Mockingbird");
+
+	        // Get the book from the library
+	        Book book = library.getBookByTitle("To Kill a Mockingbird");
+
+	        // Assert that the book is checked out and due date is not null
+	        assertNotNull(book.getDueDate());
+	    }
+	   }

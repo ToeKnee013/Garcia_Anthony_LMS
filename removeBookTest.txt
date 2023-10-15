@@ -1,0 +1,26 @@
+package module7;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+import java.util.List;
+
+public class removeBookTest {
+
+@Test
+    public void testRemoveBookFromDatabaseByBarcode() {
+        // Create a LibraryManagementSystem instance
+        LibraryManagementSystem library = new LibraryManagementSystem();
+        
+        // Add a book to the library
+        library.addBook(1, "To Kill a Mockingbird", "Harper Lee");
+        
+        // Remove the book by barcode
+        library.removeBook(1);
+
+        // Get the list of books from the library
+        List<Book> books = library.books;
+
+        // Assert that the book was removed
+        assertTrue(books.isEmpty());
+    }
+    }
