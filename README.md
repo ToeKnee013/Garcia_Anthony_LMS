@@ -27,6 +27,17 @@ CRN: CEN 3024C
 
 [addBooksTest.txt](https://github.com/ToeKnee013/Garcia_Anthony_LMS/files/12910704/addBooksTest.txt)
 
+### GUI Update
+
+[Library.txt](https://github.com/ToeKnee013/Garcia_Anthony_LMS/files/13200417/Library.txt)
+
+[LibraryManagementSystem.txt](https://github.com/ToeKnee013/Garcia_Anthony_LMS/files/13200418/LibraryManagementSystem.txt)
+
+[LibraryManagementSystemGUI.txt](https://github.com/ToeKnee013/Garcia_Anthony_LMS/files/13200419/LibraryManagementSystemGUI.txt)
+
+[Book.txt](https://github.com/ToeKnee013/Garcia_Anthony_LMS/files/13200420/Book.txt)
+
+
 ## Raw Code
 
 /**
@@ -55,7 +66,6 @@ public class LibraryManagementSystem {
     //private static final String FILENAME = "C:\\Users\\ozore\\OneDrive\\Documents\\Software Development 1\\library.txt"; // Name of the text file
     static Scanner scanner = new Scanner(System.in);
     private static final String FILENAME = "C:\\Users\\ozore\\OneDrive\\Documents\\Software Development 1\\" + scanner.nextLine() + ".txt"; // Name of the text file
-
 
     public LibraryManagementSystem() {
         books = new ArrayList<>();
@@ -307,5 +317,3 @@ class Book {
         return new Book(id, title, author);
     }
 }
-
-
